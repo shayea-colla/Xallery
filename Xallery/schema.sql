@@ -1,0 +1,20 @@
+
+CREATE TABLE user (
+
+    id INTEGER  PRIMARY KEY AUTOINCREMENT,
+    username TEXT UNIQUE NOT NULL,
+    password TEXT NOT NULL,
+    email TEXT NOT NULL,
+    profile_picture INTEGER 
+
+);
+
+
+CREATE TABLE picture (
+
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    owner_id INTEGER NOT NULL,
+    published TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (owner_id) REFERENCES user (id)
+
+);
