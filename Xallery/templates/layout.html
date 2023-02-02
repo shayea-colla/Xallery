@@ -11,6 +11,24 @@
         </title>
     </head>
     <body>
-        {% block body%} {% endblock%}
+        <nav>
+            <ul>
+            {% if g.user %}
+                <li><a href="{{ url_for('Gallery.profile')}}">profile</a></li>
+            {% else %}
+                <li><a href="{{ url_for('auth.login') }}">Login</a></li>
+            {% endif %}
+            </ul>
+        </nav>
+        <header>
+            {% block header%} {% endblock %}
+        </header>
+        <content>
+            {% block content%} {% endblock%}
+        </content>
+
+        <footer>
+            This is an open source project
+        </footer>
     </body>
 </html>

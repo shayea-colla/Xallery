@@ -2,6 +2,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from .db import get_db
 from flask import session
 import validators
+import functools
+from flask import redirect, g, url_for
 
 
 class User():
@@ -87,3 +89,23 @@ class User():
             
     def __str__(self) -> str:
         return f'username: {self.username}, password: {self.password}, error: {self.error}, email: {self._email}'
+
+
+
+
+def Gallery():
+    pass
+
+
+
+
+
+def login_required(view):
+    @functools.wraps(view)
+    def wrapper_login_required(*args, **kwargs):
+        if g.user is None:
+            return redirect(url_for("auth.login"))
+
+        return view(*args, **kwargs)
+
+    return wrapper_login_required
