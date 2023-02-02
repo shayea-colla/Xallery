@@ -1,0 +1,23 @@
+body {
+    padding: 10px;
+    margin: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color:antiquewhite;
+}
+
+form {
+    text-align: center;
+    padding: 5px;
+    margin:auto;
+    background-color: rgb(255, 38, 0);
+    color: black;
+}
+
+input {
+    display: block;
+    margin: inherit;
+    margin-bottom: 10px;
+
+}
+
+

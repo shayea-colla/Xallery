@@ -1,0 +1,17 @@
+{% extends "layout.html"%}
+
+{% block title%} Login {% endblock %}
+
+
+{%block body%} 
+
+    <form class="login-form" method="post">
+        <lable for="username" > username</label>
+        <input  name="username" id="username" type="text" autofocus>
+        <lable for="password" > password</label>
+        <input  name="password" id="password" type="password">
+        <input type="submit" value="login">
+    </form>
+
+
+{% endblock%}
