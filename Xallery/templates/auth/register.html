@@ -1,16 +1,23 @@
 {% extends "layout.html"%}
 
 {% block title%} Register {% endblock %}
+ 
 
+{% block content%}
+<div class="form">
+    <form method="post" >
 
-{% block body%}
-    <form method="post" class="register-form">
         <lable for="username">Username</lable>
         <input name="username" id="username" autofocus type="text">
-        <lable for="password" >Password</lable>
+        <lable for="password">Password</lable>
         <input name="password" id="password" type="password">
-        <lable for="email" >Email</lable>
-        <input name="email" id="email" type="text">
-        <input type="submit" value="register">
+        <input type="submit" value="create">
     </form>
+
+    <div>
+        already have acount? <a href="{{ url_for('auth.login') }}">log in</a>
+    </div>
+
+</div>
+
 {% endblock%}

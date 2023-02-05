@@ -1,26 +1,106 @@
 body {
-    padding: 10px;
-    margin: 20px;
+    padding: 0;
+    margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background-color:antiquewhite;
+    /* background-color:rgb(0, 0, 0); */
+    color: white;
+    align-items: center;
+    background-image: url('background/Xallery-04.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+header {
+    text-align: center;
+    margin: 10px;
+    padding: 8px;
+}
+
+header img {
+    width: 300px;
+    height: 100px;
+}
+
+
+
+
+a {
+    text-decoration: none;
 }
 
 form {
     text-align: center;
-    padding: 5px;
-    margin:auto;
-    background-color: rgb(255, 38, 0);
-    color: black;
+    padding: 20px;
+    align-items: center;
+    background-color: rgb(41, 32, 32);
+    display: inline-block;
+    margin: 30px;
+    border: 2px solid gray;
+    border-radius: 3px;
+    
 }
 
 input {
+    height: fit-content;
+    border: 1px solid black;
+    border-radius: 5px;
     display: block;
-    margin: inherit;
-    margin-bottom: 10px;
+    margin: 8px;
+    padding: 6px;
+}
+
+input [type=submi]:hover {
+
+    background-color: red;
+    transition: 0.4ms;
+
+}
+
+.flash-message {
+    text-align: center;
+    border-bottom: 1px dotted red;
+    background-color: rgba(255, 0, 0, 0.205);
+}
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.submit {
+    display: inline-block;
+    align-items: center;
+    position: relative;
+    right: 20px;
+}
+
+nav {
+    padding: 9px;
+    background-color: rgb(0, 187, 109);
 
 }
 
 
+footer {
+    text-align: center;
+    font-size: small;
+    color: red;
+    padding: 8px;
+    height: auto;
+}
+
+footer hr {
+
+    border: 1px dotted red;
+}
 
 
-
+content {
+    padding: 10px;
+    align-items: center;
+    text-align: center;
+}

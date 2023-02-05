@@ -3,15 +3,23 @@
 {% block title%} Login {% endblock %}
 
 
-{%block body%} 
+{% block content%} 
+<div class="form">
+    <form method="post">
 
-    <form class="login-form" method="post">
-        <lable for="username" > username</label>
-        <input  name="username" id="username" type="text" autofocus>
-        <lable for="password" > password</label>
-        <input  name="password" id="password" type="password">
-        <input type="submit" value="login">
+        <lable for="username">username</lable>
+        <input name="username" id="username" type="text" autofocus>
+        <lable for="password">password</lable>
+        <input name="password" id="password" type="password">
+        <div class="submit">
+            <input type="submit" value="login">
+        </div>
     </form>
 
+    <div>
+       Don't have account? <a href="{{ url_for('auth.register') }}">create</a>
+    </div>
+
+</div>
 
 {% endblock%}

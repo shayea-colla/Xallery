@@ -9,10 +9,15 @@
         <title>
             {% block title%} {% endblock %}
         </title>
+
     </head>
     <body>
+        <header>
+            <img src={{ url_for('static', filename='logo.png')}} alt="Xallery">
+        </header>
         <nav>
             <ul>
+
             {% if g.user %}
                 <li><a href="{{ url_for('Gallery.profile')}}">profile</a></li>
             {% else %}
@@ -20,14 +25,21 @@
             {% endif %}
             </ul>
         </nav>
-        <header>
-            {% block header%} {% endblock %}
-        </header>
+        <div class="flash-message">
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="flash">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        </div>
         <content>
             {% block content%} {% endblock%}
         </content>
 
         <footer>
+            <hr>
             This is an open source project
         </footer>
     </body>

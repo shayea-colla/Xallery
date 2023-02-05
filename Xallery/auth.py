@@ -10,7 +10,7 @@ from flask import (
 )
 
 from .db import get_db
-from .module import User 
+from .module import User
 
 
 bp = Blueprint("auth", __name__, url_prefix="/auth")
@@ -22,10 +22,8 @@ def register():
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
-        email    = request.form['email']
-        
 
-        user = User(username, password, email)
+        user = User(username, password)
 
         user.register()
 
@@ -33,6 +31,7 @@ def register():
             return redirect(url_for("auth.login"))
 
         flash(user.error)
+
     return render_template("auth/register.html")
 
 
@@ -40,17 +39,17 @@ def register():
 def login():
 
     if request.method == "POST":
-        username = request.form['username']
-        password = request.form['password']
-        
+        username = request.form["username"]
+        password = request.form["password"]
+
         user = User(username, password)
-        
+
         if user.check():
             user.login()
-            
+
         if user.error is None:
-            return redirect(url_for('index'))
-        
+            return redirect(url_for("index"))
+
         flash(user.error)
     return render_template("auth/login.html")
 
@@ -65,4 +64,3 @@ def load_logged_in_user():
         user_id = (
             get_db().execute("SELECT * FROM user WHERE id = ?", (user_id,)).fetchone()
         )
-

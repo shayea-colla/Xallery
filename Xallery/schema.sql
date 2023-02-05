@@ -1,11 +1,15 @@
 
+DROP TABLE IF EXISTS user ;
+DROP TABLE IF EXISTS picture;
+DROP TABLE IF EXISTS designer;
+
+
 CREATE TABLE user (
 
     id INTEGER  PRIMARY KEY AUTOINCREMENT,
     username TEXT UNIQUE NOT NULL,
     password TEXT NOT NULL,
-    email TEXT NOT NULL,
-    profile_picture INTEGER 
+    profile_picture INTEGER DEFAULT Null
 
 );
 
