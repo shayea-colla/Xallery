@@ -1,7 +1,7 @@
-<!doctype html>
+ <!doctype html>
 <html>
     <head>
-        <meta name="viewport">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="utf-8">
         <meta name="auther" content="shayea">
         <meta name="discription" content="Xallery enables you to share your photos with other designers, ordinary people and the whole world">
@@ -13,18 +13,9 @@
     </head>
     <body>
         <header>
-            <img src={{ url_for('static', filename='logo.png')}} alt="Xallery">
+            {% block header %} {% endblock %}
         </header>
-        <nav>
-            <ul>
-
-            {% if g.user %}
-                <li><a href="{{ url_for('Gallery.profile')}}">profile</a></li>
-            {% else %}
-                <li><a href="{{ url_for('auth.login') }}">Login</a></li>
-            {% endif %}
-            </ul>
-        </nav>
+            {% block nav %} {% endblock %}
         <div class="flash-message">
         {% with messages = get_flashed_messages(with_categories=True) %}
             {% if messages %}

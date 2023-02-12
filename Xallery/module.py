@@ -1,8 +1,11 @@
+import os
 from werkzeug.security import generate_password_hash, check_password_hash
 from .db import get_db
-from flask import session
+from flask import session, current_app
 import functools
 from flask import redirect, g, url_for
+from werkzeug.utils import secure_filename
+from werkzeug.exceptions import abort
 
 
 class User:
@@ -90,6 +93,7 @@ class User:
         """
         if self.error is not None:
             return False
+
         db = get_db()
         user = db.execute(
             "SELECT * FROM user WHERE username = ?", (self.username,)
@@ -130,3 +134,48 @@ def login_required(view):
         return view(*args, **kwargs)
 
     return wrapper_login_required
+
+
+def allowed_extention(filename):
+    ALLOWED_EXTENTIONS = {"png", "jpeg", "jpg"}
+    return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENTIONS
+
+
+def save_picture(file, id):
+    db = get_db()
+    picture_name = secure_filename(file.filename)
+    try:
+        db.execute(
+            "INSERT INTO picture (owner_id, picture_name) VALUES (?,?)",
+            (id, picture_name),
+        )
+        db.commit()
+    except db.IntegrityError:
+        return False
+
+    file.save(os.path.join(current_app.config["UPLOAD_FOLDER"], filename=picture_name))
+    return True
+
+
+def get_designer(id=None):
+    db = get_db()
+
+    if id is not None:
+        designer = db.execute("SELECT * FROM user WHERE id = ?", (id,)).fetchone()
+        if designer is None:
+            abort(404)
+
+        return designer
+
+    designers = db.execute("SELECT * FROM user").fetchall()
+    return designers
+
+
+def check_designer(id):
+    """return True if the designer that trying to save picture into db is the owner of that account,
+    return False other wise
+    """
+    if id == g.user["id"]:
+        return True
+
+    abort(401)

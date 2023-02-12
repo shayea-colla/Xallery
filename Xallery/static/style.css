@@ -2,12 +2,13 @@ body {
     padding: 0;
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    /* background-color:rgb(0, 0, 0); */
+    background-color:rgb(0, 0, 0);
     color: white;
     align-items: center;
-    background-image: url('background/Xallery-04.jpg');
+    /* background-image: url('background/hi2-02.jpg'); 
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat;  */
+    
 }
 
 
@@ -22,12 +23,16 @@ header img {
     height: 100px;
 }
 
-
-
-
-a {
-    text-decoration: none;
+.clear {
+    clear: both;
 }
+
+.logo {
+    float: left;
+    margin-top: 10px;
+    display: block;
+}
+
 
 form {
     text-align: center;
@@ -39,7 +44,7 @@ form {
     border: 2px solid gray;
     border-radius: 3px;
     
-}
+} 
 
 input {
     height: fit-content;
@@ -59,17 +64,37 @@ input [type=submi]:hover {
 
 .flash-message {
     text-align: center;
-    border-bottom: 1px dotted red;
     background-color: rgba(255, 0, 0, 0.205);
 }
 
 
 ul {
+
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
+
 }
+
+.nav-profile-img {
+    padding: 0;
+    width: 4vw;
+    height: 4vw;
+
+}
+
+
+ul li {
+    display: inline;
+    float: right;
+}
+
+ul li a {
+    margin-right: 10px;
+}
+
+
 
 .submit {
     display: inline-block;
@@ -81,26 +106,94 @@ ul {
 nav {
     padding: 9px;
     background-color: rgb(0, 187, 109);
-
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 30px;
+    height: fit-content;
 }
 
-
-footer {
-    text-align: center;
-    font-size: small;
-    color: red;
-    padding: 8px;
-    height: auto;
-}
-
-footer hr {
-
-    border: 1px dotted red;
-}
-
+/* styling the content */
 
 content {
     padding: 10px;
     align-items: center;
     text-align: center;
+}
+
+.profile-page-img {
+    padding: 2px;
+    margin-top: -10px;
+    display: block
+
+
+}
+
+.profile-page-img img {
+    width: 15vw;
+    height: 15vw;
+
+}
+
+.profile-page-info {
+    margin-top: 1vw;
+}
+
+.profile-page-info .name {
+    font-size: 2vw;
+}
+
+.profile-page-edit .edit, .add {
+    display: block;
+
+}
+
+
+
+.profile-page-edit .edit .edit-link {
+    text-decoration: none;
+}
+
+.profile-page-edit .edit .edit-link:hover {
+   text-decoration: underline;
+}
+
+
+.profile-page-add {
+    margin: 2px;
+    padding: 2px;
+    border: 2px dotted rgb(0, 0, 0);
+    display: block;
+
+
+}
+
+.profile-page-add .upload-picture-form {
+    margin-left: 650px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* styling footer */
+footer {
+    text-align: center;
+    font-size: small;
+    color: rgb(253, 253, 253);
+    padding: 8px;
+    height: auto;
+    position: relative;
+    
+}
+
+footer hr {
+
+    border: 1px solid rgb(0, 255, 179);
 }

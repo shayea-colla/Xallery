@@ -5,10 +5,34 @@
   {% endblock %}
 
   {% block header%} 
-    Galleries
+      <a href="{{ url_for('gallery.index')}}" ><img src={{ url_for('static', filename='logo.png')}} alt="Xallery"></a>
   {% endblock %}
 
 
+  {% block nav %} 
+  <nav>
+	  <ul>
+		  {% if g.user %}
+			  <li><a href="{{ url_for('gallery.profile', id=g.user['id'])}}"><img class="nav-profile-img" src="static/pro_img/0.png"></a></li>
+		  {% else %}
+			  <li><a href="{{ url_for('auth.login') }}">Login</a></li>
+
+		  {% endif %}
+	  </ul>
+  </nav>
+  {% endblock%}
+
+
+
+
+
+
+
+
   {% block content %}
-        <div>INDEX</div>
+        
+        {% for designer in designers %}
+           <a href="{{ url_for('gallery.profile', id=designer['id']) }}">{{ designer['username'] }}</a> 
+         {% endfor %}
+
   {% endblock %}

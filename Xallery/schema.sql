@@ -9,7 +9,7 @@ CREATE TABLE user (
     id INTEGER  PRIMARY KEY AUTOINCREMENT,
     username TEXT UNIQUE NOT NULL,
     password TEXT NOT NULL,
-    profile_picture INTEGER DEFAULT Null
+    profile_picture TEXT DEFAULT "0.png"
 
 );
 
@@ -18,6 +18,7 @@ CREATE TABLE picture (
 
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     owner_id INTEGER NOT NULL,
+    picture_name TEXT  UNIQUE NOT NULL,
     published TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (owner_id) REFERENCES user (id)
 

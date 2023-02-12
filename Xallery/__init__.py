@@ -7,6 +7,7 @@ def create_app(test_config=None):
     app.config.from_mapping(
         SECRET_KEY="naodnfwr23u39293023u403jkqfe023",
         DATABASE=os.path.join(app.instance_path, "xallery.sqlite"),
+        UPLOAD_FOLDER="/static/picture",
     )
 
     if test_config == None:

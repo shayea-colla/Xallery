@@ -1,2 +1,43 @@
 {% extends 'layout.html'%}
 
+{% block title %} profile {% endblock %}
+
+
+{% block header %} 
+<div class="logo">
+    <a  href="{{ url_for('gallery.index')}}" ><img src={{ url_for('static', filename='logo.png')}} alt="Xallery"></a>
+</div>
+<div class="clear"></div>
+
+{% endblock %}
+
+
+{% block content %}
+    <div class="profile-page-img">
+      <img src="static/pro_img/0.png">
+    </div>
+    <div class="profile-page-info">
+        <div class="name">
+            {{ designer['username']}}
+        </div>
+    </div>
+    {% if designer['id'] == g.user['id'] %}
+        <div class="profile-page-edit">
+            <div class="edit">
+                <a class="edit-link" href="{{ url_for('gallery.edit')}}">edit</a>
+            </div>
+        </div>
+        <div class="profile-page-add">
+            <form action="/upload" class="upload-picture-form" method="post" enctype="multipart/form-data">
+                <input type="file" name="upload-picture" id="upload-picture">
+                <input type="submit" value="Upload">
+            </form>
+        </div>
+        <a href="{{ url_for('auth.logout') }}">logout</a>
+    {% endif %}
+
+        <div class="clear"></div>
+    </div>
+    <hr>
+
+{% endblock %}
