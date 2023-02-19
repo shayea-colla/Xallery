@@ -7,7 +7,8 @@ def create_app(test_config=None):
     app.config.from_mapping(
         SECRET_KEY="naodnfwr23u39293023u403jkqfe023",
         DATABASE=os.path.join(app.instance_path, "xallery.sqlite"),
-        UPLOAD_FOLDER="/static/picture",
+        UPLOAD_FOLDER="/home/samy/projects/Xallery/Xallery/static/picture",
+        CUSTOM_STATIC_PATH="picture"
     )
 
     if test_config == None:
@@ -21,12 +22,8 @@ def create_app(test_config=None):
         os.makedirs(app.instance_path)
     except OSError:
         pass
-
-    app.route("/hello")
-
-    def hello():
-        return "<p>HELLO F FLASK</p>"
-
+    
+    
     from . import db
 
     db.init_app(app)

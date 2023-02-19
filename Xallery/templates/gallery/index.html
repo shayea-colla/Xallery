@@ -32,7 +32,9 @@
   {% block content %}
         
         {% for designer in designers %}
-           <a href="{{ url_for('gallery.profile', id=designer['id']) }}">{{ designer['username'] }}</a> 
+          <div>
+            <a href="{{ url_for('gallery.profile', id=designer['id']) }}">{{ designer['username']}} </a>
+          </div>
          {% endfor %}
 
   {% endblock %}

@@ -14,7 +14,7 @@
 
 {% block content %}
     <div class="profile-page-img">
-      <img src="static/pro_img/0.png">
+      <img src={{ url_for('static', filename='pro_img/0.png') }}>
     </div>
     <div class="profile-page-info">
         <div class="name">
@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="profile-page-add">
-            <form action="/upload" class="upload-picture-form" method="post" enctype="multipart/form-data">
+            <form action="{{ url_for('gallery.profile', id=designer['id'] )}}" class="upload-picture-form" method="post" enctype="multipart/form-data">
                 <input type="file" name="upload-picture" id="upload-picture">
                 <input type="submit" value="Upload">
             </form>

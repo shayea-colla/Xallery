@@ -153,22 +153,42 @@ def save_picture(file, id):
     except db.IntegrityError:
         return False
 
-    file.save(os.path.join(current_app.config["UPLOAD_FOLDER"], filename=picture_name))
+    file.save(os.path.join(current_app.config["UPLOAD_FOLDER"], picture_name))
     return True
 
 
 def get_designer(id=None):
+    """fetch one or more designers from db based on id
+
+    Args:
+        id(integer)
+    Returns:
+        _type_: list or designers if id was None, one designer otherwise
+        >> abort a 404 error if designer was not exist in db
+    """
     db = get_db()
 
     if id is not None:
         designer = db.execute("SELECT * FROM user WHERE id = ?", (id,)).fetchone()
         if designer is None:
             abort(404)
+    else:
+        designer = db.execute("SELECT * FROM user").fetchall()
 
-        return designer
+    return designer
 
-    designers = db.execute("SELECT * FROM user").fetchall()
-    return designers
+def get_picture(id=None):
+    
+	db = get_db()
+
+	if id is not None:
+		picture = db.execute("SELECT * FROM picture where owner_id = ?",(id,)).fetchall()
+	else:
+		picture = db.execute("SELECT * FROM picture").fetchall()
+
+	return picture
+
+
 
 
 def check_designer(id):
