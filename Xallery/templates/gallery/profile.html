@@ -5,7 +5,7 @@
 
 {% block header %} 
 <div class="logo">
-    <a  href="{{ url_for('gallery.index')}}" ><img src={{ url_for('static', filename='logo.png')}} alt="Xallery"></a>
+    <a  href="{{ url_for('gallery.index')}}" ><img src={{ url_for('static', filename='static/logo.png')}} alt="Xallery"></a>
 </div>
 <div class="clear"></div>
 
@@ -13,8 +13,11 @@
 
 
 {% block content %}
+<div class="profile-page">
+
+</div>
     <div class="profile-page-img">
-      <img src={{ url_for('static', filename='pro_img/0.png') }}>
+      <img src={{ url_for('static', filename=g.user['profile_picture']) }}>
     </div>
     <div class="profile-page-info">
         <div class="name">
@@ -35,9 +38,14 @@
         </div>
         <a href="{{ url_for('auth.logout') }}">logout</a>
     {% endif %}
-
         <div class="clear"></div>
     </div>
     <hr>
-
+    <div class="pictures">
+        {% for picture in pictures %}
+            <div class="gallery-picture">
+                <img src="{{ url_for('static' , filename=picture['picture_name'])}}">
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

@@ -144,6 +144,8 @@ def allowed_extention(filename):
 def save_picture(file, id):
     db = get_db()
     picture_name = secure_filename(file.filename)
+    file.save(os.path.join(current_app.config["UPLOAD_FOLDER"], picture_name))
+    
     try:
         db.execute(
             "INSERT INTO picture (owner_id, picture_name) VALUES (?,?)",
@@ -153,7 +155,6 @@ def save_picture(file, id):
     except db.IntegrityError:
         return False
 
-    file.save(os.path.join(current_app.config["UPLOAD_FOLDER"], picture_name))
     return True
 
 

@@ -16,6 +16,7 @@ from .module import (
     allowed_extention,
     save_picture,
     check_designer,
+    get_picture,
 )
 
 bp = Blueprint("gallery", __name__)
@@ -51,7 +52,8 @@ def profile(id):
 
         ...
     designer = get_designer(id)
-    return render_template("gallery/profile.html", designer=designer)
+    pictures = get_picture(id)
+    return render_template("gallery/profile.html", pictures=pictures ,designer=designer)
 
 
 @bp.route("/edit", methods=("GET", "POST"))
@@ -80,6 +82,7 @@ def upload_picture(id):
                 error = "FILE DOES NOT EXIST; PERHAPS YOU FORGET TO CHOOSE FILE"
             else:
                 if save_picture(file, id):
+                    flash('you have succesfully uploaded the picture')
                     return redirect(url_for("gallery.profile"))
 
         flash(error)

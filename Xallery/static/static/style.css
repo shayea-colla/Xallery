@@ -167,14 +167,29 @@ content {
 }
 
 .profile-page-add .upload-picture-form {
-    margin-left: 650px;
+    margin: auto;
 }
 
 
 
+.pictures {
+    padding: 10px;
+    margin: 4px;
+    border: 1px solid white;
+}
+.gallery-picture {
+    width: 500px;
+    height: 500px;
+    border: 1px solid white;
+    border-radius: 30px;
+    background-color: aliceblue;
+    
+}
 
-
-
+.gallery-picture img {
+    width: 100%;
+    height: 100%;
+}
 
 
 
