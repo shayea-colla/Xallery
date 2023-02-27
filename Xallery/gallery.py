@@ -16,6 +16,8 @@ from .module import (
     allowed_extention,
     save_picture,
     check_designer,
+    check_picture,
+    delete_picture,
     get_picture,
 )
 
@@ -63,12 +65,16 @@ def edit():
 
     return render_template("gallery/edit.html")
 
+@bp.route('/<int:id>/delete', methods=['POST'])
+def delete(id):
+    return
 
-@bp.route("/<int:id>/upload", methods=("POST", "GET"))
+
+
+
+@bp.route("/<int:id>/upload", methods=("POST", ))
 def upload_picture(id):
 
-    if request.method == "GET":
-        return redirect(url_for("gallery.profile"))
 
     error = None
     if check_designer(id):

@@ -13,15 +13,14 @@
   <nav>
 	  <ul>
 		  {% if g.user %}
-			  <li><a href="{{ url_for('gallery.profile', id=g.user['id'])}}"><img class="nav-profile-img" src="static/pro_img/0.png"></a></li>
+		  <li><a href="{{ url_for('gallery.profile', id=g.user['id'])}}"><img class="nav-profile-img" src="{{ url_for('static', filename=g.user['profile_picture'])}}"></a></li>
 		  {% else %}
 			  <li><a href="{{ url_for('auth.login') }}">Login</a></li>
 
 		  {% endif %}
-	  </ul>
-  </nav>
-  {% endblock%}
-
+	  </ul> 
+  </nav> 
+  {% endblock %}
 
 
 

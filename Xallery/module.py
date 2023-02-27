@@ -183,7 +183,7 @@ def get_picture(id=None):
 	db = get_db()
 
 	if id is not None:
-		picture = db.execute("SELECT * FROM picture where owner_id = ?",(id,)).fetchall()
+		picture = db.execute("SELECT * FROM picture where owner_id = ? ORDER BY published DESC",(id,)).fetchall()
 	else:
 		picture = db.execute("SELECT * FROM picture").fetchall()
 
@@ -191,12 +191,32 @@ def get_picture(id=None):
 
 
 
-
 def check_designer(id):
-    """return True if the designer that trying to save picture into db is the owner of that account,
-    return False other wise
+    """return True if the designer that trying to save picture into db is the owner of that account,abort 401 error otherwise.
     """
     if id == g.user["id"]:
         return True
 
     abort(401)
+
+
+
+
+
+def check_picture(id, user_id):
+    # Check if the picture exist in db
+    db = get_db()
+    id = int(id)
+    picture = db.execute("SELECT * FROM picture WHERE id = ?",
+            id,).fetchone()
+    if picture is not None:
+        return True 
+
+    return False
+
+
+def delete_picture(id):
+    try:
+        get_db().execute("DELETE FROM picture WHERE id = ?", id)
+    except:
+        return "no way home so we couldn't delete the picture alone"     

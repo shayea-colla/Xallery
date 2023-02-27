@@ -17,7 +17,7 @@
 
 </div>
     <div class="profile-page-img">
-      <img src={{ url_for('static', filename=g.user['profile_picture']) }}>
+	    <img src={{ url_for('static', filename=designer['profile_picture'])}}>
     </div>
     <div class="profile-page-info">
         <div class="name">
@@ -45,6 +45,8 @@
         {% for picture in pictures %}
             <div class="gallery-picture">
                 <img src="{{ url_for('static' , filename=picture['picture_name'])}}">
+		{% if designer['id'] == g.user['id'] %}
+		{% endif %}
             </div>
         {% endfor %}
     </div>
