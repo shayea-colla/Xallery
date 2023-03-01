@@ -1,2 +1,2 @@
 # Xallery
-Gallery application made with Flask frame work
+Gallery application made with Flask
