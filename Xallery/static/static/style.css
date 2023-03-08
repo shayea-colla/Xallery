@@ -33,7 +33,7 @@ header img {
 }
 
 
-form {
+.form {
     text-align: center;
     padding: 20px;
     align-items: center;
@@ -188,7 +188,23 @@ content {
 }
 
 
+.delete-button {
+	width: 50px;
+	height: 40px;
+	margin: 4px;
+	padding: 4px;
+	border: 1px solid darkred;
+	border-radius: 30%;
+	background-color: gray;
+	color: white;
+	transition: 0.4ms ease;
+}
 
+.delete-button:hover {
+
+	background-color: black;
+	
+}
 
 
 
