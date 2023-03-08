@@ -46,8 +46,14 @@
             <div class="gallery-picture">
                 <img src="{{ url_for('static' , filename=picture['picture_name'])}}">
 		{% if designer['id'] == g.user['id'] %}
+		<form method="post" id="delete_picture_form" action="{{ url_for('gallery.delete', id=designer['id'])}}">
+			<input type='hidden' id="picture_id" name="picture_idvalue="{{ picture['id'] }}">
+			<button type='button' class="delete-button">					 
+		</form>			      
+		<script src="{{ url_for('static', filename='static/script.js')}}">
+		</script>
 		{% endif %}
-            </div>
+    </div>
         {% endfor %}
     </div>
 {% endblock %}

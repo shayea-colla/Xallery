@@ -67,7 +67,10 @@ def edit():
 
 @bp.route('/<int:id>/delete', methods=['POST'])
 def delete(id):
-    return
+    # delete picture from db
+
+    form = request.form['picture_id']
+    return render_template('tmp.html', tmp=form)
 
 
 
